@@ -1,1 +1,46 @@
-<p>audio-player works!</p>
+<mat-card class="audio-player-bg-card">
+  <mat-card class="audio-player-card">
+    <mat-card-title>#{{audioId}}</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="audio-img">
+        <img mat-card-image src={{audioImage}} alt="image to display">
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-card-title>{{audioName}}</mat-card-title>
+      <mat-card-subtitle>{{artistName}}</mat-card-subtitle>
+      <mat-divider></mat-divider>
+      <div class="audio-control-btns">
+        <div class="audio-progress-row">
+          <mat-progress-bar mode="determinate" value={{audioProgressValue}}></mat-progress-bar>
+          {{currentAudioTimeInMmSs}}/{{audioDuration}}
+        </div>
+        <div class="audio-control-button-row">
+          <div class="audio-control-flex-container">
+            <div class="audio-control-button-container">
+              <button class="prev-audio-btn" mat-mini-fab (click)="playPreviousAudio()">
+                <mat-icon>skip_previous</mat-icon>
+              </button>
+            </div>
+            <div class="audio-control-button-container" *ngIf="isAudioPlayed">
+              <button mat-fab (click)="handleAudioPlayPause()" class="play-pause-audio-btn">
+                <mat-icon>play_arrow</mat-icon>
+              </button>
+            </div>
+            <div class="audio-control-button-container" *ngIf="isAudioPaused">
+              <button mat-fab (click)="handleAudioPlayPause()" class="play-pause-audio-btn">
+                <mat-icon>pause</mat-icon>
+              </button>
+            </div>
+            <div class="audio-control-button-container">
+              <button class="next-audio-btn" mat-mini-fab (click)="playNextAudio()">
+                <mat-icon>skip_next</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</mat-card>
